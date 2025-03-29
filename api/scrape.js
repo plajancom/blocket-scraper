@@ -1,12 +1,14 @@
-const puppeteer = require('puppeteer');
+const chromium = require('chrome-aws-lambda');
 
 module.exports = async (req, res) => {
-  let browser;
+  let browser = null;
 
   try {
-    browser = await puppeteer.launch({
-      headless: true,
-      args: ['--no-sandbox', '--disable-setuid-sandbox']
+    browser = await chromium.puppeteer.launch({
+      args: chromium.args,
+      defaultViewport: chromium.defaultViewport,
+      executablePath: await chromium.executablePath,
+      headless: chromium.headless
     });
 
     const page = await browser.newPage();
@@ -34,6 +36,6 @@ module.exports = async (req, res) => {
     console.error('Scrape error:', error.message);
     res.status(500).json({ error: 'Scrape failed', details: error.message });
   } finally {
-    if (browser) await browser.close();
+    if (browser !== null) await browser.close();
   }
 };
