@@ -1,12 +1,12 @@
 {
   "name": "blocket-scraper",
   "version": "1.0.0",
-  "main": "index.js",
   "scripts": {
     "start": "node api/scrape.js"
   },
   "dependencies": {
-    "puppeteer-core": "^21.3.8",
+    "puppeteer-core": "^10.2.0",
     "chrome-aws-lambda": "^10.1.0"
   }
 }
+
