@@ -21,7 +21,7 @@ module.exports = async (req, res) => {
       const price = el.querySelector('[class*="Price"]')?.innerText.trim() || '';
       const bg = el.querySelector('div[style*="background-image"]');
       const imageStyle = bg?.style?.backgroundImage || '';
-      const match = imageStyle.match(/url\\(\"?(.*?)\"?\\)/);
+      const match = imageStyle.match(/url\\(["']?(.*?)["']?\\)/);
       const image = match ? match[1] : '';
       return { title, link, price, image };
     });
