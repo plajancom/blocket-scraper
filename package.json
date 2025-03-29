@@ -1,5 +1,5 @@
 {
-  "name": "blocket-scraper",
+  "name": "blocket-render-scraper",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
